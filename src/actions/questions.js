@@ -1,5 +1,6 @@
 import { saveQuestion, saveQuestionAnswer  } from "../../utils/api";
 import { addQuestionIdIntoUser, addSelectedAnswerToUser } from "./users";
+import { showLoading, hideLoading  } from "react-redux-loading";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const SAVE_QUESTION_INTO_DATA = "SAVE_QUESTION_INTO_DATA";
@@ -22,10 +23,12 @@ function addAnswerIntoData (ans){
 export function handleSaveAnswer(quesId, ans){
     return (dispatch, getState) => {
         const { authedUser } = getState();
+        dispatch(showLoading());
         return saveQuestionAnswer({authedUser: authedUser, qid:quesId, answer:ans})
         .then(() => {
             dispatch(addAnswerIntoData({authedUser: authedUser, qid:quesId, answer:ans}));
             dispatch(addSelectedAnswerToUser({authedUser: authedUser, qid:quesId, answer:ans}));
+            dispatch(hideLoading());
         })
     }
 }
@@ -35,6 +38,7 @@ export function handleAddQuesiton(optionOneText, optionTwoText){
     return (dispatch, getState) => {
         const { authedUser } = getState();
 
+        dispatch(showLoading());
         return saveQuestion({
             optionOneText,
             optionTwoText,
@@ -44,6 +48,7 @@ export function handleAddQuesiton(optionOneText, optionTwoText){
             dispatch(saveQuestionIntoData(question))
             dispatch(addQuestionIdIntoUser(authedUser, question.id))
         })
+        .then (() => dispatch(hideLoading()));
     }
 }
 
