@@ -1,0 +1,17 @@
+.root {
+    display: 'flex';
+}
+.appBar {
+    width: calc(100% - 500px);
+    margin-left: 500px;
+}
+
+.drawer {
+    width: 500px;
+    flex-shrink: 0px;
+    background-color: "#04102A";
+}
+
+drawerPaper {
+    width: 500,
+}
