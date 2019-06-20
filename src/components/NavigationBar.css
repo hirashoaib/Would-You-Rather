@@ -12,6 +12,11 @@
     background-color: "#04102A";
 }
 
+.drawer > div {
+    background-color: "#04102A";
+}
+
 drawerPaper {
-    width: 500,
+    width: 500;
+    background-color: "#04102A";
 }

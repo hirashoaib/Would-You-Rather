@@ -14,7 +14,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Route, Router, Switch } from "react-router-dom";
 import createBrowserHistory from 'history/createBrowserHistory'
-import Login from './Login';
+import Login from './LoginComponent';
 import TestPage from './TestPage';
 import Button from '@material-ui/core/Button';
 

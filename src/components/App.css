@@ -1,4 +1,10 @@
 .App {
     text-align: center;
 }
+
+.appcontent {
+    flex-grow: 1;
+    padding-top: 80px;
+    padding-left: 240px;
+}
   

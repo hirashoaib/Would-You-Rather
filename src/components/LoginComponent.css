@@ -1,0 +1,38 @@
+.main-login-container {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    min-width: 320px;
+    max-width: 450px;
+    height: auto;
+    text-align: center;
+    padding-left: 200px;
+}
+
+.login-title-header {
+    height: 50px;
+    background-color: lightgray;
+}
+
+.login-title {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.login-components {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-elements {
+    width: calc(100% - 10px);
+    margin: 10px 0px !important;
+}
+
+.login-image {
+    width: 30px;
+    height: 30px;
+}

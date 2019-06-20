@@ -2,46 +2,34 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route, Router, Switch } from "react-router-dom";
 import createBrowserHistory from 'history/createBrowserHistory'
-import Login from './Login';
-import MiniDrawer from './NavigationBar';
+import LoginComponent from './LoginComponent';
 import TestPage from './TestPage';
-
-
-
-import { makeStyles, ThemeProvider } from '@material-ui/styles';
-import { spacing } from '@material-ui/system';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { orange } from '@material-ui/core/colors';
-import PermanentDrawerLeft from './NavigationBar3';
-import MyDrawer from './NavigationBar4';
-
-
-const theme = createMuiTheme({
-    spacing: value => value,
-    status: {
-      // My business variables
-      danger: orange[500],
-    },
-  });
-  
+import MyDrawer from './NavigationBar';
+import { handleIntialData  } from "../actions/shared";
+import { connect } from "react-redux";
 
 class App extends Component {
+
+    componentDidMount(){
+        this.props.initilizeData();
+    }
+
     render (){
+        let history = createBrowserHistory();
         return (
-            <Router history={createBrowserHistory()}>
-                <ThemeProvider theme={theme}>
-                        <div>
-                            {/*<MiniDrawer />*/}
-                            {/*<TemporaryDrawer />*/}
-                            <MyDrawer />
-                        </div>
+            <Router history={history}>
+                <div>
+                    <div>
+                        <MyDrawer history={history} />
+                    </div>
+                    <div className="appcontent" >
                         <Switch>
-                            <Route exact path="/" component={Login} />
-                            <Route exact path="/login" component={Login} />
+                            <Route exact path="/" component={LoginComponent} />
+                            <Route exact path="/login" component={LoginComponent} />
                             <Route exact path="/testpage" component={TestPage} />
                         </Switch>
-                    </ThemeProvider>   
-                
+                    </div>
+                </div>
             </Router>
                      
         );
@@ -49,4 +37,12 @@ class App extends Component {
     
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+    return {
+        initilizeData: () => {
+            dispatch(handleIntialData());
+        }
+    };
+}
+
+export default connect(null, mapDispatchToProps)(App);
