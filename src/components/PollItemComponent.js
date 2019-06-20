@@ -53,7 +53,7 @@ function mapStateToProps({authedUser, questions, users}, { id }) {
     return {
         authedUser,
         question: formatQuestion(question,users[question.author],authedUser),
-        questionURL: users[authedUser].answers[id]? `questionresult/${question.id}` : `/question/${question.id}`
+        questionURL: users[authedUser].answers[id]? `question-result/${question.id}` : `/question/${question.id}`
     }
 }
 

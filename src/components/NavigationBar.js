@@ -60,7 +60,7 @@ class MyDrawer extends Component {
                                     <ListItemIcon><InboxIcon /></ListItemIcon>
                                     <ListItemText primary={"Home"} />
                                 </ListItem>
-                                <ListItem className={classes.listItem} onClick={this.handleClick("/newquestion")}  button key={"newquestion"}>
+                                <ListItem className={classes.listItem} onClick={this.handleClick("/addquestion")}  button key={"newquestion"}>
                                     <ListItemIcon><InboxIcon /></ListItemIcon>
                                     <ListItemText primary={"New Question"} />
                                 </ListItem>

@@ -36,22 +36,15 @@ class ViewQuestionComponent extends Component {
 
     render() {
         const { question, authedUser} = this.props;
-        
         if(!authedUser){
             return <Redirect to="/login" />
         }
-
         if(!question) {
             return null;
         }
-
         if(this.state.goToResultComponent){
-            return <Redirect to={`/pollResult/${question.id}`} />
+            return <Redirect to={`/question-result/${question.id}`} />
         }
-
-        
-
-
         return (
             <div className="question-container">
                 <Paper style={{overflow: "auto"}}>

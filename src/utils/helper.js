@@ -11,3 +11,7 @@ export function formatQuestion (question, author) {
     }
   }
 
+export function voteCount(votes, question){
+    let totalOptions = question.optionOne.votes.length + question.optionTwo.votes.length;
+    return votes / totalOptions *100;
+}

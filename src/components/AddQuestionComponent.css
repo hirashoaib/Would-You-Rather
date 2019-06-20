@@ -1,0 +1,33 @@
+.add-question-container {
+    min-width: 320px;
+    max-width: 400px;
+    height: auto;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-left: 200px;
+}
+
+.add-question-title {
+    height: 50px;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.new-input-width {
+    width: 100%;
+}
+
+.question-title {
+    font-weight: bold;
+    margin-top: 20px;
+}

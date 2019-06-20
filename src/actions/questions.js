@@ -6,10 +6,10 @@ export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const SAVE_QUESTION_INTO_DATA = "SAVE_QUESTION_INTO_DATA";
 export const SAVE_ANSWER_INTO_DATA = "SAVE_ANSWER_INTO_DATA";
 
-function saveQuestionIntoData (ques){
+function saveQuestionIntoData (question){
     return {
         type: SAVE_QUESTION_INTO_DATA,
-        ques
+        question
     }
 }
 
@@ -34,7 +34,7 @@ export function handleSaveAnswer(quesId, ans){
 }
 
 
-export function handleAddQuesiton(optionOneText, optionTwoText){
+export function handleSaveQuesiton(optionOneText, optionTwoText){
     return (dispatch, getState) => {
         const { authedUser } = getState();
 
