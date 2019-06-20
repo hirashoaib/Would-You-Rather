@@ -13,10 +13,10 @@ function saveQuestionIntoData (ques){
     }
 }
 
-function addAnswerIntoData (ans){
+function addAnswerIntoData (answer){
     return {
         type: SAVE_ANSWER_INTO_DATA,
-        ans
+        answer
     }
 }
 

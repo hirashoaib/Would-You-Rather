@@ -7,6 +7,8 @@ import TestPage from './TestPage';
 import MyDrawer from './NavigationBar';
 import { handleIntialData  } from "../actions/shared";
 import { connect } from "react-redux";
+import HomeComponent from './HomeComponent';
+import ViewQuestionComponent from './ViewQuestionComponent';
 
 class App extends Component {
 
@@ -26,6 +28,8 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={LoginComponent} />
                             <Route exact path="/login" component={LoginComponent} />
+                            <Route exact path="/home" component={HomeComponent} />
+                            <Route exact path="/question/:id" component={ViewQuestionComponent} />
                             <Route exact path="/testpage" component={TestPage} />
                         </Switch>
                     </div>
