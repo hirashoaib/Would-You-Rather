@@ -9,8 +9,6 @@ import { formatQuestion } from "../utils/helper";
 import { connect } from "react-redux";
 import { handleSaveAnswer } from "../actions/questions";
 import { Redirect } from "react-router-dom";
-
-
 import './ViewQuestionComponent.css';
 
 class ViewQuestionComponent extends Component {
@@ -87,15 +85,13 @@ class ViewQuestionComponent extends Component {
                                             style={{width: "100%", backgroundColor:"#F2B705"}}
                                             onClick={this.handleSubmit}
                                             disabled={this.state.value===''}
-
                                             >
                                         Submit
                                     </Button>
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </div>
-                    
+                    </div>                    
                 </Paper>
             </div>
         );

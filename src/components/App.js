@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route, Router, Switch } from "react-router-dom";
-import createBrowserHistory from 'history/createBrowserHistory'
 import LoginComponent from './LoginComponent';
-import TestPage from './TestPage';
 import MyDrawer from './NavigationBar';
 import { handleIntialData  } from "../actions/shared";
 import { connect } from "react-redux";
@@ -12,6 +10,7 @@ import ViewQuestionComponent from './ViewQuestionComponent';
 import AddQuestionComponent from './AddQuestionComponent';
 import QuestionResultComponent from './QuestionResultComponent';
 import LeaderboardComponent from './LeaderboardComponent';
+const createBrowserHistory = require('history').createBrowserHistory
 
 class App extends Component {
 
@@ -36,7 +35,6 @@ class App extends Component {
                             <Route exact path="/question/:id" component={ViewQuestionComponent} />
                             <Route exact path="/addquestion" component={AddQuestionComponent} />
                             <Route exact path="/leaderboard" component={LeaderboardComponent} />
-                            <Route exact path="/testpage" component={TestPage} />
                         </Switch>
                     </div>
                 </div>

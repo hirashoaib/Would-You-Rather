@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { handleSaveQuesiton } from "../actions/questions";
-
 import './AddQuestionComponent.css';
 
 class AddQuestionComponent extends Component {
@@ -32,15 +31,12 @@ class AddQuestionComponent extends Component {
     }
 
     render() {
-
         if(!this.props.authedUser){
             return <Redirect to="/login" />
-        }
-        
+        }        
         if(this.state.goToHome){
             return <Redirect to="/home" />
         }
-
         return (
             <div>
                 <div className="add-question-container">

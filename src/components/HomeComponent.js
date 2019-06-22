@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-//import TabContainer from './TabContainer';
 import Grid from '@material-ui/core/Grid';
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PollItemComponent from './PollItemComponent';
-
   
 class HomeComponent extends Component {
 
@@ -27,7 +24,6 @@ class HomeComponent extends Component {
         if(!authedUser){
             return <Redirect to="/login" />
         }
-
 
         return (
             <div style={{minWidth: '320px', maxWidth: '500px', height: 'auto',
@@ -53,8 +49,7 @@ class HomeComponent extends Component {
 
 
     pollItems(isAnswered){
-        let questionsIds = isAnswered? this.props.answeredQuestionIds: this.props.unsweredQuestionIds
-        console.log("q ids ",questionsIds);
+        let questionsIds = isAnswered? this.props.answeredQuestionIds: this.props.unsweredQuestionIds;
         return (
             <div>
                 {

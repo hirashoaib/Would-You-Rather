@@ -41,8 +41,6 @@ class MyDrawer extends Component {
     }
     render (){
         const { classes, authenticateUser} = this.props;
-        console.log("auth user > ",this.props.authedUser);
-        console.log("user authenticateUser > ",this.props.authenticateUser);
         return (
             <div className="root">
             {this.props.authedUserId?

@@ -11,7 +11,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Redirect } from "react-router-dom";
 import { setAuthorizedUser } from "../actions/authedUser";
-
 import './LoginComponent.css';
 import { Typography } from '@material-ui/core';
 

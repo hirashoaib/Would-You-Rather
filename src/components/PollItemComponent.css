@@ -3,7 +3,6 @@
     max-width: 450px;
     height: auto;
     margin: auto;
-    
 }
 
 .poll-paper {
@@ -25,7 +24,6 @@
     padding-left: 10px;
     color:white;
 }
-
 
 .poll-components {
     display: flex;
@@ -54,11 +52,8 @@
     margin-top: 20px;
 }
 
-.poll-question {
-    
+.poll-question {   
     font-weight: bold;
     font-size: 1em;
     height: 30px;
-    
-    
 }
