@@ -11,6 +11,7 @@ import HomeComponent from './HomeComponent';
 import ViewQuestionComponent from './ViewQuestionComponent';
 import AddQuestionComponent from './AddQuestionComponent';
 import QuestionResultComponent from './QuestionResultComponent';
+import LeaderboardComponent from './LeaderboardComponent';
 
 class App extends Component {
 
@@ -34,6 +35,7 @@ class App extends Component {
                             <Route exact path="/question-result/:id" component={QuestionResultComponent} />
                             <Route exact path="/question/:id" component={ViewQuestionComponent} />
                             <Route exact path="/addquestion" component={AddQuestionComponent} />
+                            <Route exact path="/leaderboard" component={LeaderboardComponent} />
                             <Route exact path="/testpage" component={TestPage} />
                         </Switch>
                     </div>
