@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,24 +8,25 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
 import { withStyles } from '@material-ui/core/styles';
 import LoadingBar from "react-redux-loading";
 import './NavigationBar.css';
 import { connect } from "react-redux";
+import { setAuthorizedUser } from "../actions/authedUser";
+import Avatar from '@material-ui/core/Avatar';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
     paper: {
-        //backgroundColor: "#04102A",
-        backgroundColor: "white",
+        backgroundColor: "black",
         width:"220px"
     },
     listItem: {
         color:"while",
     },
     toolbar : {
-        height: "64px"
+        height: "63px"
     }
   }
 
@@ -33,17 +34,28 @@ class MyDrawer extends Component {
     handleClick = (route)=>{
         return ()=>this.props.history.push(route);
     }
+
+    onLogoutPress = e => {
+        e.preventDefault();
+        this.props.dispatch(setAuthorizedUser(null));
+    }
     render (){
-        const { classes} = this.props;
+        const { classes, authenticateUser} = this.props;
         console.log("auth user > ",this.props.authedUser);
-        console.log("user loggedInUser > ",this.props.loggedInUser);
+        console.log("user authenticateUser > ",this.props.authenticateUser);
         return (
             <div className="root">
+            {this.props.authedUserId?
+            <div>
                 <AppBar position="fixed" className="appBar">
-                    <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        Permanent
-                    </Typography>
+                    <Toolbar style={{backgroundColor:"#595959", flexDirection:"row-reverse"}}>
+                    
+                    <Fragment >
+                                    <Typography variant="h5" style={{color:"white"}} >
+                                        {authenticateUser.name}
+                                    </Typography>
+                                    <Avatar alt="Remy Sharp" src={authenticateUser?authenticateUser.avatarURL:""}  style={{marginRight:"20px"}} />
+                                </Fragment>
                     </Toolbar>
                 </AppBar>
                 <LoadingBar />
@@ -51,41 +63,32 @@ class MyDrawer extends Component {
                     variant="permanent"
                     classes={{ paper: classes.paper }}
                     anchor="left"
+                    style={{backgroundColor:"red"}}
                 >
                     <div className={classes.toolbar} />
-                    <Divider />
-
-                    {this.props.authedUserId? <List>
-                                <ListItem className={classes.listItem} onClick={this.handleClick("/home")}  button key={"home"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"Home"} />
+                    <Divider  style={{backgroundColor:"#A6A6A6"}} />
+                    <List>
+                                <ListItem className={classes.listItem}  onClick={this.handleClick("/home")}  button key={"home"}>
+                                    <ListItemIcon ><HomeIcon style={{backgroundColor:"#A6A6A6"}}/></ListItemIcon>
+                                    <ListItemText primary={<Typography variant="body1" style={{ color: '#A6A6A6', fontWeight:"bold" }}>{"Home"}</Typography>} />
                                 </ListItem>
                                 <ListItem className={classes.listItem} onClick={this.handleClick("/addquestion")}  button key={"newquestion"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"New Question"} />
+                                    <ListItemIcon><Icon style={{backgroundColor:"#A6A6A6"}}>add_circle</Icon></ListItemIcon>
+                                    <ListItemText primary={<Typography variant="body1" style={{ color: '#A6A6A6', fontWeight:"bold" }}>{"New Question"}</Typography>} />
                                 </ListItem>
                                 <ListItem className={classes.listItem} onClick={this.handleClick("/leaderboard")}  button key={"leaderboard"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"Leader Board"} />
+                                    <ListItemIcon><Icon style={{backgroundColor:"#A6A6A6"}}>assessment</Icon></ListItemIcon>
+                                    <ListItemText primary={<Typography variant="body1" style={{ color: '#A6A6A6', fontWeight:"bold" }}>{"Leader Board"}</Typography>} />
                                 </ListItem>
-                                <ListItem className={classes.listItem} onClick={this.handleClick("/testpage")}  button key={"testpage"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"Test Page"} />
-                                </ListItem>
-                                <ListItem className={classes.listItem} onClick={this.handleClick("/logout")}  button key={"logout"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"Logout"} />
-                                </ListItem>
-                        </List>:
-                        <List>
-                            <ListItem className={classes.listItem} onClick={this.handleClick("/login")}  button key={"login"}>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
-                                    <ListItemText primary={"Login"} />
+                                <ListItem className={classes.listItem} onClick={this.onLogoutPress}  button key={"logout"}>
+                                    <ListItemIcon><Icon style={{backgroundColor:"#A6A6A6"}}>input</Icon></ListItemIcon>
+                                    <ListItemText primary={<Typography variant="body1" style={{ color: '#A6A6A6', fontWeight:"bold" }}>{"Logout"}</Typography>} />
                                 </ListItem>
                         </List>
-                    }
 
                 </Drawer>
+                </div>:
+                <div></div>}
             </div>
         );
     }    
@@ -94,7 +97,7 @@ class MyDrawer extends Component {
 function mapStateToProps({authedUser, users}) {
     return {
         authedUserId: authedUser,
-        loggedInUser: users[authedUser]
+        authenticateUser: users[authedUser]
     }
 }
 export default connect(mapStateToProps)(withStyles(styles)(MyDrawer));

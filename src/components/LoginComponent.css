@@ -8,12 +8,12 @@
     max-width: 450px;
     height: auto;
     text-align: center;
-    padding-left: 200px;
+    
 }
 
 .login-title-header {
     height: 50px;
-    background-color: lightgray;
+    color:white;
 }
 
 .login-title {
@@ -30,6 +30,7 @@
 .form-elements {
     width: calc(100% - 10px);
     margin: 10px 0px !important;
+    background-color: #e0e0e0;
 }
 
 .login-image {

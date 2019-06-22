@@ -112,5 +112,4 @@ function mapStateToProps({authedUser, users}) {
     }
 }
 
-//export default connect(mapStateToProps)(LeaderboardComponent);
 export default connect(mapStateToProps)(withStyles(styles)(LeaderboardComponent));

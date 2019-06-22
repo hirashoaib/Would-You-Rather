@@ -4,6 +4,7 @@
 .appBar {
     width: calc(100% - 500px);
     margin-left: 500px;
+    background-color: #131D26;
 }
 
 .drawer {

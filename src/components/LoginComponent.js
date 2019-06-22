@@ -46,7 +46,7 @@ class LoginComponent extends Component {
 
         return (
             <div className="main-login-container">
-                <Paper>
+                <Paper style={{height:"300px", backgroundColor:"#161616"}}>
                     <div className="login-title-header">
                         <div className="login-title">
                             Welcome to the Would you Rather App!
@@ -56,22 +56,23 @@ class LoginComponent extends Component {
                         </div>
                     </div>
                     <div className="login-components">
-                        <Typography>Sign In</Typography>
                         <form>
                             <FormControl variant="filled" className="form-elements">
-                                <InputLabel htmlFor="login-users">Select User</InputLabel>
+                                <InputLabel htmlFor="login-users" style={{color:"white"}}>Select User</InputLabel>
                                 <Select
+                                    style={{backgroundColor:"#3b3b3b"}}
                                     value={this.state.userId}
                                     onChange={this.handleUserChange}
                                     input={<FilledInput name="userId" id="login-users" />}
                                 >   
                                     {
                                         userIds.map((id) => (
-                                            <MenuItem key={id} value={id}>
+                                            <MenuItem style={{backgroundColor:"#262626"}} key={id} value={id}>
                                                 <ListItemIcon >
                                                     <img className="login-image" alt="complex" src={users[id].avatarURL} />
                                                 </ListItemIcon>
-                                                <ListItemText inset primary={users[id].name} />
+                                                <ListItemText inset primary={<Typography type="body2" style={{ color: 'white' }}>{users[id].name}</Typography>} />
+                                                
                                             </MenuItem>        
                                         ))
                                     }

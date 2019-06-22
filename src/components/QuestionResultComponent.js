@@ -5,9 +5,15 @@ import Grid from '@material-ui/core/Grid';
 import { Redirect } from "react-router-dom";
 import { formatQuestion, voteCount } from "../utils/helper";
 import { connect } from "react-redux";
-
 import './QuestionResultComponent.css';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+    bar: {
+        backgroundColor: "#590202",
+    }
+  }
+  
 class QuestionResultComponent extends Component {
 
     totlaVotes () {
@@ -107,7 +113,7 @@ class QuestionResultComponent extends Component {
     }
 
     progressBar(optionObj){
-        return (<LinearProgress variant="determinate" value={voteCount(optionObj.votes.length,this.props.question)} style={{height: "15px !important"}}/>)
+        return (<LinearProgress variant="determinate" value={voteCount(optionObj.votes.length,this.props.question)} style={{height: "15px !important"}} classes={{bar: this.props.classes.bar}}/>)
     }
 }
 
@@ -119,5 +125,5 @@ function mapStateToProps({authedUser, questions, users}, props) {
     }
 }
 
-export default connect(mapStateToProps)(QuestionResultComponent);
+export default connect(mapStateToProps)(withStyles(styles)(QuestionResultComponent));
 

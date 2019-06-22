@@ -15,19 +15,19 @@
     font-weight: bold;
     text-align: center;
     border-bottom-style: solid;
-    border-color: lightgray;
+    border-color: #595959;
     border-width: 1px;
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: #595959;
     text-align: left;
     justify-content: center;
     padding-left: 10px;
+    color:white;
 }
 
 
 .poll-components {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -40,11 +40,13 @@
     max-height: '100%';
     width: 100px;
     height: 100px;
+    border-radius: 50%;
 }
 
 .pollBtn {
     width: 100%;
     margin-top: 30px !important;
+    background-color: #F2B705 !important;
 }
 
 .pollItemText {

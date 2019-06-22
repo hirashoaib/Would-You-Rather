@@ -77,8 +77,8 @@ class ViewQuestionComponent extends Component {
                                         value={this.state.value}
                                         onChange={this.selectOption}
                                     >
-                                        <FormControlLabel value="optionOne" control={<Radio />} label={question.optionOne.text} />
-                                        <FormControlLabel value="optionTwo" control={<Radio />} label={question.optionTwo.text} />
+                                        <FormControlLabel value="optionOne" control={<Radio style={{color:"#F2B705"}} />} label={question.optionOne.text} />
+                                        <FormControlLabel value="optionTwo" control={<Radio style={{color:"#F2B705"}}/>} label={question.optionTwo.text} />
                                     </RadioGroup>
                                     </div>
                                 </Grid>
