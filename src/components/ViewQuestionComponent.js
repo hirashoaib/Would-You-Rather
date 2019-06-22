@@ -84,15 +84,14 @@ class ViewQuestionComponent extends Component {
                                 </Grid>
                                 <Grid item >
                                     <Button variant="contained" 
-                                            color="inherit" style={{width: "100%"}}
+                                            style={{width: "100%", backgroundColor:"#F2B705"}}
                                             onClick={this.handleSubmit}
                                             disabled={this.state.value===''}
+
                                             >
                                         Submit
                                     </Button>
                                 </Grid>
-                                
-                                
                             </Grid>
                         </Grid>
                     </div>

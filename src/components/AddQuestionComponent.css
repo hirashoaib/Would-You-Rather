@@ -27,6 +27,11 @@
     width: 100%;
 }
 
+.add-question-btn {
+    width:100%;
+    background-color:#F2B705 !important;
+}
+
 .question-title {
     font-weight: bold;
     margin-top: 20px;
