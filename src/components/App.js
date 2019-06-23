@@ -10,6 +10,7 @@ import ViewQuestionComponent from './ViewQuestionComponent';
 import AddQuestionComponent from './AddQuestionComponent';
 import QuestionResultComponent from './QuestionResultComponent';
 import LeaderboardComponent from './LeaderboardComponent';
+import NotFound404Component from './NotFound404Component';
 const createBrowserHistory = require('history').createBrowserHistory
 
 class App extends Component {
@@ -35,6 +36,7 @@ class App extends Component {
                             <Route exact path="/question/:id" component={ViewQuestionComponent} />
                             <Route exact path="/addquestion" component={AddQuestionComponent} />
                             <Route exact path="/leaderboard" component={LeaderboardComponent} />
+                            <Route path="*" component={NotFound404Component} />
                         </Switch>
                     </div>
                 </div>
