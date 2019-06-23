@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import PollItemComponent from './PollItemComponent';
+import { saveURL } from "../actions/url";
   
 class HomeComponent extends Component {
 
@@ -18,10 +19,14 @@ class HomeComponent extends Component {
     };
 
     render() {
+        console.log("this.props == ",this.props);
+        console.log("this.props.match == ",this.props.match);
+        console.log("this.props.match.params == ",this.props.match.params);
         const { tabIndex } = this.state;
         const { authedUser} = this.props;
 
         if(!authedUser){
+            this.props.dispatch(saveURL(this.props.match));
             return <Redirect to="/login" />
         }
 
@@ -62,7 +67,7 @@ class HomeComponent extends Component {
     }
 }
 
-function mapStateToProps({authedUser,users, questions}) {
+function mapStateToProps({authedUser,users, questions, saveURL}) {
     return {
         authedUser,
         answeredQuestionIds: Object.keys(questions)

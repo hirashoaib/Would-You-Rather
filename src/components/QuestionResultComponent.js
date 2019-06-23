@@ -7,6 +7,9 @@ import { formatQuestion, voteCount } from "../utils/helper";
 import { connect } from "react-redux";
 import './QuestionResultComponent.css';
 import { withStyles } from '@material-ui/core/styles';
+import { saveURL } from "../actions/url";
+import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 const styles = {
     bar: {
@@ -20,16 +23,39 @@ class QuestionResultComponent extends Component {
         return this.props.question.optionOne.votes.length + this.props.question.optionTwo.votes.length
     }
 
-    render() {
+    notfoundComponent(){
+        return (
+            <div>
+                <div className="notfound-container">
+                    <Paper style={{padding:"20px"}}>
+                        <div>
+                            <div className="notfound-sorry-text">
+                                    Oppsss Sorry!
+                            </div>
+                            <div className="notfound-message">
+                                The resource you are looking for does not exists
+                            </div>
+                        </div>
+                        <Button variant="contained" color="inherit" className="notfound-btn" component={Link} to={"/home"}>GoTo Home Page</Button>
+                    </Paper>
+                </div>
+            </div>
+        )
+    }
 
+    render() {
+        console.log("this.props == ",this.props);
+        console.log("this.props.match == ",this.props.match);
+        console.log("this.props.match.params == ",this.props.match.params);
     const { question, authedUser} = this.props;
     let questionText = "Would you rather";
         
     if(!authedUser){
+        this.props.dispatch(saveURL(this.props.match));
         return <Redirect to="/login" />
     }
     if(!question) {
-        return null;
+        return this.notfoundComponent();
     }
 
     return (

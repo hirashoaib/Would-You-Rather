@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { handleSaveQuesiton } from "../actions/questions";
 import './AddQuestionComponent.css';
+import { saveURL } from "../actions/url";
 
 class AddQuestionComponent extends Component {
 
@@ -32,6 +33,7 @@ class AddQuestionComponent extends Component {
 
     render() {
         if(!this.props.authedUser){
+            this.props.dispatch(saveURL(this.props.match));
             return <Redirect to="/login" />
         }        
         if(this.state.goToHome){

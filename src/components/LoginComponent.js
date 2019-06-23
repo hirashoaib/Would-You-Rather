@@ -40,6 +40,9 @@ class LoginComponent extends Component {
         const {userIds, users} = this.props;
 
         if(this.state.toHome){
+            if(this.props.isRedirected){
+                return <Redirect to={this.props.matchObj.url} />    
+            }
             return <Redirect to="/home" />
         }
 
@@ -87,11 +90,14 @@ class LoginComponent extends Component {
     }
 }
 
-function mapStateToProps({authedUser, users}) {
+function mapStateToProps({authedUser, users, saveURL}) {
     return {
         authedUser,
         userIds: Object.keys(users),
-        users: users
+        users: users,
+        isRedirected: saveURL.redirected,
+        matchObj: saveURL.matchObj
+
     }
 }
 

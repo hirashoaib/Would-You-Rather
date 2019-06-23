@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import { handleSaveAnswer } from "../actions/questions";
 import { Redirect } from "react-router-dom";
 import './ViewQuestionComponent.css';
+import { saveURL } from "../actions/url";
+import { Link } from "react-router-dom";
 
 class ViewQuestionComponent extends Component {
 
@@ -32,13 +34,34 @@ class ViewQuestionComponent extends Component {
         })
     }
 
+    notfoundComponent(){
+        return (
+            <div>
+                <div className="notfound-container">
+                    <Paper style={{padding:"20px"}}>
+                        <div>
+                            <div className="notfound-sorry-text">
+                                    Oppsss Sorry!
+                            </div>
+                            <div className="notfound-message">
+                                The resource you are looking for does not exists
+                            </div>
+                        </div>
+                        <Button variant="contained" color="inherit" className="notfound-btn" component={Link} to={"/home"}>GoTo Home Page</Button>
+                    </Paper>
+                </div>
+            </div>
+        )
+    }
+
     render() {
         const { question, authedUser} = this.props;
         if(!authedUser){
+            this.props.dispatch(saveURL(this.props.match));
             return <Redirect to="/login" />
         }
         if(!question) {
-            return null;
+            return this.notfoundComponent();
         }
         if(this.state.goToResultComponent){
             return <Redirect to={`/question-result/${question.id}`} />

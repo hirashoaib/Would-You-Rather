@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
 import './LeaderboardComponent.css';
 import { withStyles } from '@material-ui/core/styles';
-
+import { saveURL } from "../actions/url";
 
 const styles = {
     badge: {
@@ -20,6 +20,7 @@ class LeaderboardComponent extends Component {
 
     render() {
         if(!this.props.authedUser){
+            this.props.dispatch(saveURL(this.props.match));
             return <Redirect to="/login" />
         }
         return (
